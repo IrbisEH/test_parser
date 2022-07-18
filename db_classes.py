@@ -21,4 +21,4 @@ class ConnectDB:
 
         return result[0]
 
-    def insert_prices_data(self, project_id, date, discount_price, price, installment_price):
+    # def insert_prices_data(self, project_id, date, discount_price, price, installment_price):
