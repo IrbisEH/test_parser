@@ -14,11 +14,30 @@ class ConnectDB:
         cur = con.cursor()
         url = cur.execute(
             "SELECT project_url FROM projects WHERE id=:id", {'id': project_id}
-            # "SELECT * FROM projects"
         )
         result = url.fetchone()
         con.close()
 
         return result[0]
 
-    # def insert_prices_data(self, project_id, date, discount_price, price, installment_price):
+    def save_prices(self,
+                    project_id,
+                    date,
+                    average_price,
+                    tariff_1,
+                    tariff_2,
+                    tariff_3,
+                    tariff_4,
+                    tariff_5):
+        con = sqlite3.connect(self.db_name)
+        cur = con.cursor()
+        cur.execute(
+            "INSERT INTO price"
+            "(project_id, input_date, average_price, tariff_1, tariff_2,"
+            "tariff_3, tariff_4, tariff_5)"
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            [project_id, date, average_price, tariff_1, tariff_2, tariff_3,
+             tariff_4, tariff_5]
+        )
+        con.commit()
+        con.close()

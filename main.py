@@ -3,6 +3,12 @@ from projects_classes import GetInfo1
 URL_SKILLBOX = 'https://skillbox.ru/course/healthy-self-esteem/'
 
 obj = GetInfo1()
+obj.save_data()
+
+
+
+
+
 
 # print(obj.get_price())
 
